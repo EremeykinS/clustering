@@ -16,8 +16,11 @@ for i in range(0,n_f):
 	next_set=cur.fetchmany(frame_len)
 	data[i]=[row[1]-next_set[0][1] for row in next_set]
 
-#print(next_set)
 #print([next_set[i][2] for i in range(len(next_set))])
-print(data)
+#print(data)
+
+k_means = cluster.KMeans(n_clusters=8)
+k_means.fit(data)
+print(k_means.labels_)
 
 con.close()
